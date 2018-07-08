@@ -1,7 +1,7 @@
-Role Name
-=========
+apsivam.graphite
+================
 
-A brief description of the role goes here.
+Ansible role to install and configure Graphite stack (carbon cache, carbon relay, whisper, graphite-web and carbonate) using pip in a virtual environment (virtualenv).
 
 Requirements
 ------------
@@ -30,9 +30,9 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Siva Paramasivam
