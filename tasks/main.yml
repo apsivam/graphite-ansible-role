@@ -1,2 +1,3 @@
 ---
 # tasks file for apsivam.graphite
+- import_tasks: "{{ state }}.yml"

@@ -1,0 +1,34 @@
+---
+# install selected graphite components
+- name: Ensure Graphite run as user present
+  user:
+    name: "{{ graphite_run_user }}"
+    comment: Graphite user
+    home: "{{ graphite_install_dir }}"
+    create_home: no
+    shell: /sbin/nologin
+
+- name: Create directories and set ownership
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ graphite_run_user }}"
+    group: "{{ graphite_run_group }}"
+  with_items:
+    - "{{ graphite_install_dir }}"
+    - "{{ graphite_data_dir }}"
+
+# TODO: fix hard coded python site-packages directory below.
+- name: Install selected Graphite components
+  pip:
+    name: "{{ item }}"
+    version: "{{ graphite_version }}"
+    virtualenv: "{{ graphite_install_dir }}"
+    extra_args: >
+      --no-binary=:all:
+      --install-option="--prefix={{ graphite_install_dir }}"
+      --install-option="--install-lib={{ graphite_install_dir }}/lib/python2.7/site-packages"
+      --install-option="--install-data={{ graphite_data_dir }}"
+  become: yes
+  become_user: "{{ graphite_run_user }}"
+  with_items: "{{ graphite_components }}"

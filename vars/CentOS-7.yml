@@ -1,0 +1,11 @@
+---
+# vars for Red Hat Enterprise Linux 7 & CentOS 7
+graphite_package_dependencies:
+  - python-pip
+  - python-virtualenv
+  - python-devel
+  - cairo-devel
+  - libffi-devel
+  - dejavu-sans-fonts
+  - dejavu-serif-fonts
+  - gcc

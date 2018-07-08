@@ -1,0 +1,15 @@
+---
+# install graphite stack on RHEL & CentOS
+- name: Import vairables for "{{ ansible_distribution }}" "{{ ansible_distribution_major_version }}"
+  include_vars: "vars/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+
+- name: Install EPEL Repository
+  yum:
+    name: epel-release
+    state: present
+
+- name: Install dependencies
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ graphite_package_dependencies }}"

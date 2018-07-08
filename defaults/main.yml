@@ -1,2 +1,12 @@
 ---
 # defaults file for apsivam.graphite
+graphite_version: #blank for latest available version
+graphite_install_dir: /opt/graphite
+graphite_data_dir: /opt/graphitedata
+graphite_run_user: graphite
+graphite_run_group: graphite
+graphite_components:
+  - carbon
+  - whisper
+  - graphite-web
+  - carbonate

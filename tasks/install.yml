@@ -1,0 +1,5 @@
+---
+# install distro specific prerequisites
+- include_tasks: "install-{{ ansible_os_family }}-prerequisites.yml"
+# install graphite components
+- include_tasks: install-graphite-components.yml

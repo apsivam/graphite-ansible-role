@@ -1,0 +1,4 @@
+---
+# make sure the graphite components are installed, configured and running
+- include_tasks: install.yml
+- include_tasks: configure.yml
