@@ -1,0 +1,23 @@
+---
+# configure carbon relay daemon
+# create configuration files required for carbon relay
+- name: Create carbon relay configuration files
+  copy:
+    remote_src: yes
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ graphite_run_user }}"
+    group: "{{ graphite_run_group }}"
+    force: no
+  with_items:
+    - { src: "{{ graphite_data_dir }}/conf/carbon.conf.example", dest: "{{ graphite_data_dir }}/conf/carbon.conf" }
+    - { src: "{{ graphite_data_dir }}/conf/relay-rules.conf.example", dest: "{{ graphite_data_dir }}/conf/relay-rules.conf" }
+
+- name: Configure carbon relay daemon
+  ini_file:
+    path: "{{ graphite_data_dir }}/conf/carbon.conf"
+    create: no
+    section: relay
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items: "{{ graphite_carbon_relay_ini }}"

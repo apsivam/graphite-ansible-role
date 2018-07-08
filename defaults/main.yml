@@ -1,5 +1,6 @@
 ---
 # defaults file for apsivam.graphite
+# vars required for install
 graphite_version: #blank for latest available version
 graphite_install_dir: /opt/graphite
 graphite_data_dir: /opt/graphitedata
@@ -10,3 +11,10 @@ graphite_components:
   - whisper
   - graphite-web
   - carbonate
+
+# vars required to configure Graphite components
+graphite_carbon_daemons:
+  - cache
+  - relay
+graphite_carbon_cache_ini: {}
+graphite_carbon_relay_ini: {}

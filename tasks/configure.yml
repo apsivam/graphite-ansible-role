@@ -1,0 +1,6 @@
+---
+# configure Graphite components
+- include_tasks: "configure-{{ component_item }}.yml"
+  with_items: "{{ graphite_components }}"
+  loop_control:
+    loop_var: component_item

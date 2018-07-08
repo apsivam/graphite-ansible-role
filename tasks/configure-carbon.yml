@@ -1,0 +1,6 @@
+---
+# configure carbon daemons
+- include_tasks: "configure-carbon-{{ daemon_item }}.yml"
+  with_items: "{{ graphite_carbon_daemons }}"
+  loop_control:
+    loop_var: daemon_item
