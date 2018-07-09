@@ -18,3 +18,5 @@ graphite_carbon_daemons:
   - relay
 graphite_carbon_cache_ini: {}
 graphite_carbon_relay_ini: {}
+graphite_carbon_relay_rules:
+  sections: []

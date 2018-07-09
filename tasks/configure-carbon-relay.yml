@@ -21,3 +21,14 @@
     option: "{{ item.option }}"
     value: "{{ item.value }}"
   with_items: "{{ graphite_carbon_relay_ini }}"
+
+- name: Configure relay rules for carbon daemon
+  ini_file:
+    path: "{{ graphite_data_dir }}/conf/relay-rules.conf"
+    create: no
+    section: "{{ item.0.name }}"
+    option: "{{ item.1.keys()[0] }}"
+    value: "{{ item.1.values()[0] }}"
+  with_subelements:
+    - "{{ graphite_carbon_relay_rules.sections }}"
+    - config
