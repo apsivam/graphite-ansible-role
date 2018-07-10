@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: Siva Paramasivam
+  role_name: graphite
   description: Install and configure Graphite stack using pip in virtualenv
   company: 
   license: MIT
